@@ -7,6 +7,7 @@ from dataset.validation.fishyscapes import Fishyscapes
 from dataset.validation.lost_and_found import LostAndFound
 from dataset.validation.road_anomaly import RoadAnomaly
 from dataset.validation.segment_me_if_you_can import SegmentMeIfYouCan
+from dataset.validation.street_obstacle_sequences import StreetObstacleSequences
 from engine.engine import Engine
 from model.network import Network
 from utils.img_utils import Compose, Normalize, ToTensor
@@ -52,6 +53,8 @@ def main(gpu, ngpus_per_node, config, args):
     segment_me_obstacle = SegmentMeIfYouCan(split='road_obstacle', root=config.segment_me_root_path,
                                             transform=transform)
     road_anomaly = RoadAnomaly(root=config.road_anomaly_root_path, transform=transform)
+    street_obstacle_sequences = StreetObstacleSequences(split='', root=config.street_obstacle_root_path,
+                                                        transform=transform)
     model = get_anomaly_detector(config.rpl_weight_path)
     vis_tool = Tensorboard(config=config)
 
@@ -90,6 +93,10 @@ def main(gpu, ngpus_per_node, config, args):
 
     valid_anomaly(model=model, engine=engine, iteration=0, test_set=road_anomaly, data_name='road_anomaly',
                   my_wandb=vis_tool, logger=logger, measure_way=config.measure_way)
+
+    valid_anomaly(model=model, engine=engine, iteration=0, test_set=street_obstacle_sequences,
+                  data_name='Street obstacles', my_wandb=vis_tool, logger=logger,
+                  measure_way=config.measure_way)
 
     valid_epoch(model, engine, cityscapes_val, vis_tool, evaluator=evaluator, logger=logger)
 
