@@ -10,14 +10,15 @@ C.seed = 666
 
 """Root Directory Config"""
 C.repo_name = 'ood_seg'
-C.root_dir = os.path.realpath("")
+C.root_dir = '/home/hpc/iwso/iwso148h/RPL'
 
 """Data Dir and Weight Dir"""
-C.city_root_path = 'path/to/your/cityscapes'
-C.coco_root_path = 'path/to/your/coco'
-C.fishy_root_path = 'path/to/your/fishyscapes'
-C.segment_me_root_path = 'path/to/your/smiyc'
-C.road_anomaly_root_path = 'path/to/your/roadanomaly'
+C.city_root_path = '/home/vault/iwso/iwso148h/AnomalyData/city_scape'
+C.coco_root_path = '/home/vault/iwso/iwso148h/AnomalyData/coco'
+C.fishy_root_path = '/home/vault/iwso/iwso148h/AnomalyData/fishyscapes'
+C.segment_me_root_path = '/home/vault/iwso/iwso148h/AnomalyData/segment_me'
+C.road_anomaly_root_path = '/home/vault/iwso/iwso148h/AnomalyData/road_anomaly'
+C.street_obstacle_root_path = '/home/vault/iwso/iwso148h/AnomalyData/street_obstacle_sequences'
 
 C.rpl_corocl_weight_path = os.path.join(C.root_dir, 'ckpts', 'exp', 'rev3.pth')
 C.pretrained_weight_path = os.path.join(C.root_dir, 'ckpts', 'pretrained_ckpts', 'cityscapes_best.pth')
@@ -76,7 +77,7 @@ C.display_iter = 50
 
 """Wandb Config"""
 # Specify you wandb environment KEY; and paste here
-C.wandb_key = ""
+C.wandb_key = "9f9392db741712baafed2a1d54d48af6933263c7"
 
 # Your project [work_space] name
 C.proj_name = "OoD_Segmentation"
