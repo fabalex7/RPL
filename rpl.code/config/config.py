@@ -10,16 +10,18 @@ C.seed = 666
 
 """Root Directory Config"""
 C.repo_name = 'ood_seg'
-C.root_dir = os.path.realpath("")
+C.root_dir = '/home/hpc/iwso/iwso148h/RPL'
 
 """Data Dir and Weight Dir"""
-C.city_root_path = 'path/to/your/cityscapes'
-C.coco_root_path = 'path/to/your/coco'
-C.fishy_root_path = 'path/to/your/fishyscapes'
-C.segment_me_root_path = 'path/to/your/smiyc'
-C.road_anomaly_root_path = 'path/to/your/roadanomaly'
+C.city_root_path = '/home/vault/iwso/iwso148h/AnomalyData/city_scape'
+C.coco_root_path = '/home/vault/iwso/iwso148h/AnomalyData/coco'
+C.fishy_root_path = '/home/vault/iwso/iwso148h/AnomalyData/fishyscapes'
+C.segment_me_root_path = '/home/vault/iwso/iwso148h/AnomalyData/segment_me'
+C.road_anomaly_root_path = '/home/vault/iwso/iwso148h/AnomalyData/road_anomaly'
+C.street_obstacle_root_path = '/home/vault/iwso/iwso148h/AnomalyData/street_obstacle_sequences'
 
-C.rpl_weight_path = os.path.join(C.root_dir, 'ckpts', 'exp', 'res.pth')
+#C.rpl_weight_path = os.path.join(C.root_dir, 'ckpts', 'exp', 'res.pth')
+C.rpl_weight_path = '/home/vault/iwso/iwso148h/saved_ckpts/run_0.01/epoch-last.pth'
 C.pretrained_weight_path = os.path.join(C.root_dir, 'ckpts', 'pretrained_ckpts', 'cityscapes_best.pth')
 
 """Network Config"""
@@ -49,16 +51,16 @@ C.num_eval_imgs = 500
 """Train Config"""
 C.lr = 7.5e-5
 C.batch_size = 8
-C.energy_weight = .05
+C.energy_weight = .01
 
 C.lr_power = 0.9
 C.momentum = 0.9
 C.weight_decay = 1e-4
 
-C.nepochs = 40 
+C.nepochs = 40
 C.niters_per_epoch = C.num_train_imgs // C.batch_size
 
-C.num_workers = 8
+C.num_workers = 4
 C.void_number = 5
 C.warm_up_epoch = 0
 
@@ -93,6 +95,6 @@ C.wandb_online = True
 """Save Config"""
 C.saved_dir = os.path.join("ckpts/exp", C.experiment_name)
 
-if not os.path.exists(C.saved_dir):
-    os.mkdir(C.saved_dir)
+#if not os.path.exists(C.saved_dir):
+#    os.mkdir(C.saved_dir)
 
