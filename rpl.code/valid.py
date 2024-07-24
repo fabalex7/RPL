@@ -52,9 +52,9 @@ class Validator(torch.nn.Module):
                       data_name='Fishyscapes_static', my_wandb=vis_tool, logger=self.logger,
                       measure_way=self.measure_way)
 
-        valid_anomaly(model=model, engine=engine, iteration=curr_iter, test_set=self.fishyscapes_ls,
+        '''valid_anomaly(model=model, engine=engine, iteration=curr_iter, test_set=self.fishyscapes_ls,
                       data_name='Fishyscapes_ls', my_wandb=vis_tool, logger=self.logger,
-                      measure_way=self.measure_way)
+                      measure_way=self.measure_way)'''
 
         valid_anomaly(model=model, engine=engine, iteration=curr_iter, test_set=self.road_anomaly,
                       data_name='road_anomaly',
